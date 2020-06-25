@@ -1,40 +1,34 @@
 {
-  "name": "trelloyes-server",
-  "version": "1.0.0",
-  "description": "express boilerplate project for easy start",
-  "main": "index.js",
+  "name": "blogful-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/server.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emancurmi/express-boilerplate.git"
+    "migrate": "postgrator --config postgrator-config.js",
+    "migrate:test": "env NODE_ENV=test npm run migrate",
+    "start": "node src/server.js",
+    "predeploy": "npm audit",
+    "deploy": "git push heroku master"
   },
   "keywords": [],
-  "author": "Eman Curmi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/emancurmi/express-boilerplate/issues"
-  },
-  "homepage": "https://github.com/emancurmi/express-boilerplate#readme",
+  "author": "Thomas `tomatao` Hudspith-Tatham <iammotivated@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "helmet": "^3.23.1",
-    "morgan": "^1.10.0",
-    "uuid": "^8.1.0",
-    "winston": "^3.2.1"
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "knex": "^0.16.3",
+    "morgan": "^1.9.1",
+    "pg": "^7.8.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.0.1",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
-  },
-  "directories": {
-    "test": "test"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "postgrator-cli": "^3.1.0",
+    "supertest": "^3.3.0"
   }
 }
