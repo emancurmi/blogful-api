@@ -32,5 +32,5 @@ function makeArticlesArray() {
 }
 
 module.exports = {
-    makeArticlesArray,
+    makeArticlesArray
 }

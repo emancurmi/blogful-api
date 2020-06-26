@@ -14,9 +14,9 @@ describe('Articles Endpoints', function () {
     })
 
 
-    //before('clean the table', () => db('blogful_articles').truncate())
+    before('clean the table', () => db('blogful_articles').truncate())
 
-    //afterEach('cleanup', () => db('blogful_articles').truncate())
+    afterEach('cleanup', () => db('blogful_articles').truncate())
 
     describe(`GET /articles`, () => {
         context(`Given no articles`, () => {
@@ -75,6 +75,7 @@ describe('Articles Endpoints', function () {
 
     describe.only(`POST /articles`, () => {
         it(`creates an article, responding with 201 and the new article`, function () {
+            this.retries(3)
             const newArticle = {
                 title: 'Test new article',
                 style: 'Listicle',
@@ -90,7 +91,7 @@ describe('Articles Endpoints', function () {
                     expect(res.body.content).to.eql(newArticle.content)
                     expect(res.body).to.have.property('id')
                     expect(res.headers.location).to.eql('/articles/${res.body.id}')
-                    const expected = new Date().toLocaleString()
+                    const expected = new Date().toLocaleString('en', { timeZone: 'UTC' })
                     const actual = new Date(res.body.date_published).toLocaleString()
                     expect(actual).to.eql(expected)
                 })
