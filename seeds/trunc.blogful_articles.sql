@@ -1,1 +1,1 @@
-TRUNCATE blogful_articles;
+TRUNCATE blogful_articles, blogful_users, blogful_comments RESTART IDENTITY CASCADE
